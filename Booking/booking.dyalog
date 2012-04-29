@@ -19,7 +19,7 @@ GETID ← { Lookup ⍵,2 }
 ∇ Z ← MaxFree LookupTable;FreeSlots;MaxFreeSlots;Ids
   Ids ← LookupTable[;1]
   ⎕ML←3
-  FreeSlots ← { (~⍵) ⊂ (⍳⍴⍵) } ¨ ↓1↓[2] LookupTable
+  FreeSlots ← { ⍵ ⊂ (⍳⍴⍵) } ¨ 0 = ↓1↓[2] LookupTable
   MaxFreeSlots ← {⊃⌈/⍵} ¨ FreeSlots
   ⎕ML←0
   Z ← ↑ ,/ Ids,[1.5]{(⍴⍵),1↑⍵} ¨ MaxFreeSlots
