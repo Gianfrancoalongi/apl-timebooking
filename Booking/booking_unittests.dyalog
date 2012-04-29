@@ -18,6 +18,12 @@ UTTable ← ↑ (3 0 0 0) (1 0 0 0) (2 0 0 0)
   Z ← Expected ≡ #.Booking.Book UTTable BookingSlots BookingId
 ∇
 
+∇ Z ← UT4;UTTable2;Expected
+  UTTable2 ← ↑ (3 0 1 1 0 0) (1 1 1 0 0 0) (2 0 0 1 0 0)
+  Expected ← ↑ (3 2 4) (1 3 3) (2 2 4)
+  Z ← Expected ≡ #.Booking.MaxFree UTTable2
+∇
+
 ∇ Z ← RunTest Name
   Z ← ⍎ Name
   :If ~ Z
@@ -28,7 +34,7 @@ UTTable ← ↑ (3 0 0 0) (1 0 0 0) (2 0 0 0)
 ∇
 
 ∇ Z ← Test;Tests
-  Tests ← 'UT1' 'UT2' 'UT3'
+  Tests ← 'UT1' 'UT2' 'UT3' 'UT4'
   Z ← RunTest ¨ Tests
   :if ^/ Z
    ⎕← 'All ' (⍴ Tests) 'tests passed' 
