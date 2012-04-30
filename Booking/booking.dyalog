@@ -25,4 +25,12 @@ GETID ← { Lookup ⍵,2 }
   Z ← ↑ ,/ Ids,[1.5]{(⍴⍵),1↑⍵} ¨ MaxFreeSlots
 ∇
 
+∇ Z ← MaxFreeSlots Input;Table;SlotRange;Slots;Ids;SubTable
+  (Table SlotRange) ← Input
+  Slots ← ⊃ ¯1 + +∘⍳/ SlotRange
+  Ids ← Table[;1]
+  SubTable ← (1↓[2] Table)[;Slots]
+  Z←MaxFree Ids,SubTable
+  Z[;2 ⊃⍴Z] ←+ ⊃ Slots
+∇
 :EndNamespace

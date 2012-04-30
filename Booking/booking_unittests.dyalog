@@ -30,6 +30,15 @@ UTTable ← ↑ (3 0 0 0) (1 0 0 0) (2 0 0 0)
   Z ← Expected ≡ #.Booking.MaxFree UTTable2
 ∇
 
+∇ Z ← UT6;UTTable2;SlotRange;Expected;RangeStart;RangeLength
+  UTTable2 ← ↑ (3 0 2 0 0 0) (1 5 7 0 0 3) (2 0 0 0 2 4)
+  RangeStart ← 3
+  RangeLength ← 3
+  SlotRange ← RangeStart RangeLength
+  Expected ← ↑ (3 3 3) (1 2 3) (2 1 3)
+  Z ← Expected ≡ #.Booking.MaxFreeSlots UTTable2 SlotRange
+∇
+
 ∇ Z ← RunTest Name
   Z ← ⍎ Name
   :If ~ Z
@@ -40,7 +49,7 @@ UTTable ← ↑ (3 0 0 0) (1 0 0 0) (2 0 0 0)
 ∇
 
 ∇ Z ← Test;Tests
-  Tests ← 'UT1' 'UT2' 'UT3' 'UT4' 'UT5'
+  Tests ← 'UT1' 'UT2' 'UT3' 'UT4' 'UT5' 'UT6'
   Z ← RunTest ¨ Tests
   :if ^/ Z
    ⎕← 'All ' (⍴ Tests) 'tests passed' 
