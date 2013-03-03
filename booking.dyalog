@@ -23,4 +23,15 @@
      Z ← (0=Period)/indices
 ∇
 
+
+∇ book Args;Bookable;what_to_book
+     (Bookable what_to_book) ← Args
+     { Bookable book_slots ⍵ } ¨ what_to_book
+∇
+
+∇ Bookable book_slots Args;period;slots
+    (period slots) ← Args
+    Bookable.table[period;slots] ← 1
+∇
+
 :EndNameSpace
