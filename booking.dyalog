@@ -15,7 +15,7 @@
      table ← Bookable.table
      indices ← ⍳ 1 ⊃ ⍴ table
      free_slots ← get_free_slots_from_period ¨ ↓ table     
-     Z ← { ⍵, free_slots[⍵] } ¨ indices
+     Z ← ↓ indices,[1.5]free_slots
 ∇
 
 ∇ Z ← get_free_slots_from_period Period;indices
