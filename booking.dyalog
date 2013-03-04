@@ -23,15 +23,26 @@
      Z ← (0=Period)/indices
 ∇
 
-
-∇ book Args;Bookable;what_to_book
-     (Bookable what_to_book) ← Args
-     { Bookable book_slots ⍵ } ¨ what_to_book
+∇ book Args;marker
+     marker ← 1
+     marker mark Args
 ∇
 
-∇ Bookable book_slots Args;period;slots
-    (period slots) ← Args
-    Bookable.table[period;slots] ← 1
+∇ unbook Args;marker
+    marker ←  0
+    marker mark Args
 ∇
+
+∇ Marker mark Args;Bookable;what_to_mark
+     (Bookable what_to_mark) ← Args
+     {Marker mark_slots Bookable ⍵ } ¨ what_to_mark
+∇
+
+∇ Marker mark_slots Args;Arg2;Bookable;period;slots 
+    (Bookable Arg2) ← Args
+    (period slots) ← Arg2
+    Bookable.table[period;slots] ← Marker
+∇
+
 
 :EndNameSpace
