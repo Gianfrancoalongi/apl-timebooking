@@ -7,11 +7,11 @@
 ∇
 
 ∇ Z ← book_one_slot_on_bookable_TEST;bookable;period;slots
-        bookable ← new_bookable 1 5 'bookable_b'
+        bookable ← new_bookable 1 3 'bookable_b'
         period ← 1
-        slots ← 2 3
-        #.Booking.book bookable (⊂(period slots))
-        #.UT.expect ← (⍬,⊂(1 (1 4 5)))
+        slots ← 2
+        #.Booking.book bookable (⊂(period (⍬,slots)))
+        #.UT.expect ← (⍬,⊂(1 (1 3)))
         Z ← #.Booking.get_free_slots bookable
 ∇
 
