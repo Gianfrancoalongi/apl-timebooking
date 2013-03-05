@@ -33,6 +33,16 @@
         Z ← #.Booking.get_free_slots bookable
 ∇
 
+∇ Z ← unbook_several_slots_on_bookable_TEST
+        bookable ← new_bookable 2 5 'bookable_e'
+        what ← ⊂(1 (1 3 5))
+        what ,← ⊂(2 (2 4))        
+        #.Booking.book bookable what
+        #.Booking.unbook bookable what
+        #.UT.expect ← ((1 (1 2 3 4 5)) (2 (1 2 3 4 5)))
+        Z ← #.Booking.get_free_slots bookable
+∇
+
 ∇ Z ← new_bookable Args;periods;slots_per_period;name        
         (periods slots_per_period name) ← Args
         dimensions ← periods slots_per_period
