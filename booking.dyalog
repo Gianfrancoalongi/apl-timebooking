@@ -11,6 +11,18 @@
         ∇
 :EndClass
 
+∇ Z ← get_common_free_slots bookables;free
+      free ← ↑ get_free_slots ¨ bookables
+      periods ← 2 ⊃ ⍴ free
+      Z ← ⊃,/{ free_intersection / free[;⍵] } ¨ ⍳ periods
+∇ 
+
+∇ Z ← l_slots free_intersection r_slots;period
+      period ← 1 ⊃ l_slots
+      intersection ← (2⊃l_slots) ∩ (2⊃r_slots)   
+      Z ← (period intersection)
+∇
+
 ∇ Z ← get_free_slots Bookable;table;indices;free_slots;mark
      table ← Bookable.table
      indices ← ⍳ 1 ⊃ ⍴ table

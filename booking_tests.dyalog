@@ -43,6 +43,13 @@
         Z ← #.Booking.get_free_slots bookable
 ∇
 
+∇ Z ← all_commonly_free_for_new_bookables_TEST
+        bookables ← { new_bookable 2 5 ⍵ } ¨ 'a' 'b'
+        #.UT.expect ← ((1 (1 2 3 4 5)) (2 (1 2 3 4 5)))
+        Z ← #.Booking.get_common_free_slots bookables
+        
+∇
+
 ∇ Z ← new_bookable Args;periods;slots_per_period;name        
         (periods slots_per_period name) ← Args
         dimensions ← periods slots_per_period

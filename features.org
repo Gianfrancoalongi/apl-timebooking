@@ -1,0 +1,21 @@
+
+* Done
+** Book slots based on exact specification
+It is possible to book slots on a bookable by means
+of passing the exact period and slots to book.
+
+** Unbook slots based on exact specificiation
+It is possible to unbook slots on a bookable,
+by means of passing the exact period and slots
+to unbook.
+
+** Retrieve list of all free slots
+It is possible to retrieve all free slots from a bookable.
+
+* Ongoing
+** Retrieve all commonly free slots for given array of Bookables
+Given an array of Bookables, it shall be possible to get all the
+commonly free slots for these bookables (intersection of free slots).
+
+* Todo
+
