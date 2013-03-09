@@ -17,5 +17,25 @@ Given an array of Bookables, it shall be possible to get all the
 commonly free slots for these bookables (intersection of free slots).
 
 * Ongoing
-* Todo
 
+* Todo
+** Maximize the intersections of free slots among bookables, given range and duration
+Given an array of bookables, a slot range (from - to) and a duration, 
+return the slots that maximize the intersection for all bookables - for the given
+duration, and respect the range.
+
+Example: Given the bookables A, B and C, the range from T_1 -> T_2 and the 
+duration D, return the slots, so that as many as possible of A,B and C can 
+be booked at the same time between T_1 and T_2, for duration D.
+
+** Retrieve array of slots, such that Must Bookables intersect and Would Bookables may or may not intersect
+Given an array of bookables, a slot range (from - to), a duration, must bookables,
+and would be bookables. Return the slots that respect the from-to and the duration, such
+that all must bookables intersect, and the would bookables may or may not intersect.
+Prioritize slots such that would bookables intersect, over the slots where would bookables
+do not intersect. Of course, the must bookables must always intersect.
+
+Example: Given the Must Bookables: A and B, and the Would Bookables: C and D, the 
+range T_1 -> T_2 and the Duration D. Return the slots such that A and B are free during
+these  , C and D must not necessarily be free during these slots, but if there
+is a slot-range with C and D available as well, return this slot range.
