@@ -14,12 +14,17 @@
 ∇ Z ← get_common_free_slots bookables;free;intersected
       free ← ↑ get_free_slots ¨ bookables
       periods ← 2 ⊃ ⍴ free
-      intersected ←  ⊃,/{ free_intersection / free[;⍵] } ¨ ⍳ periods      
+      intersected ←  ⊃,/{ free_intersection / free[;⍵] } ¨ ⍳ periods
       Z ←  remove_empty_periods intersected
 ∇ 
 
-∇ Z ← remove_empty_periods intersected
-      Z ← ({ ⍬≢2 ⊃ ⍵} ¨ intersected) / intersected
+∇ Z ← remove_empty_periods intersected;bit_array
+      bit_array ← ({⍬≢2 ⊃ ⍵} ¨ intersected) 
+      :If 0≡+/bit_array
+              Z ← ⍬
+      :Else
+              Z ← bit_array  / intersected
+      :EndIf
 ∇
 
 ∇ Z ← l_slots free_intersection r_slots;period

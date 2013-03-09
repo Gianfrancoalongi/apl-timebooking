@@ -70,6 +70,15 @@
         Z ← #.Booking.get_common_free_slots b_e b_f b_g
 ∇
 
+∇ Z ← no_commonly_free_slots_for_bookables_TEST;b_h;b_i
+        b_h ← new_bookable 2 3 'h'
+        b_i ← new_bookable 2 3 'i'
+        #.Booking.book b_h ((1 (1 2)) (2 (2 3)))
+        #.Booking.book b_i ((1 (2 3)) (2 (1 2)))
+        #.UT.expect ← ⍬
+        Z ← #.Booking.get_common_free_slots b_h b_i
+∇
+
 ∇ Z ← new_bookable Args;periods;slots_per_period;name        
         (periods slots_per_period name) ← Args
         dimensions ← periods slots_per_period
