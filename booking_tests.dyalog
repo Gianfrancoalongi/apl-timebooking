@@ -52,8 +52,8 @@
 
 ∇ Z ← only_other_period_commonly_free_for_booked_bookables_TEST;b_c;b_d
         b_c ← new_bookable 2 4 'c'
-        #.Booking.book b_c (⊂(1 (1 2)))
         b_d ← new_bookable 2 5 'd'
+        #.Booking.book b_c (⊂(1 (1 2)))
         #.Booking.book b_d (⊂(1 (3 4)))
         #.UT.expect ← (⍬,⊂(2 (1 2 3 4)))
         Z ← #.Booking.get_common_free_slots b_c b_d
