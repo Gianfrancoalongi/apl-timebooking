@@ -14,10 +14,13 @@
 ∇ Z ← get_common_free_slots bookables;free;intersected
       free ← ↑ get_free_slots ¨ bookables
       periods ← 2 ⊃ ⍴ free
-      intersected ← ⊃,/{ free_intersection / free[;⍵] } ¨ ⍳ periods      
-      Z ←  ({ ⍬≢2 ⊃ ⍵} ¨ intersected) / intersected
-
+      intersected ←  ⊃,/{ free_intersection / free[;⍵] } ¨ ⍳ periods      
+      Z ←  remove_empty_periods intersected
 ∇ 
+
+∇ Z ← remove_empty_periods intersected
+      Z ← ({ ⍬≢2 ⊃ ⍵} ¨ intersected) / intersected
+∇
 
 ∇ Z ← l_slots free_intersection r_slots;period
       period ← 1 ⊃ l_slots
