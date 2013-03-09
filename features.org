@@ -12,10 +12,10 @@ to unbook.
 ** Retrieve list of all free slots
 It is possible to retrieve all free slots from a bookable.
 
-* Ongoing
 ** Retrieve all commonly free slots for given array of Bookables
 Given an array of Bookables, it shall be possible to get all the
 commonly free slots for these bookables (intersection of free slots).
 
+* Ongoing
 * Todo
 
