@@ -79,6 +79,18 @@
         Z ← #.Booking.get_common_free_slots b_h b_i
 ∇
 
+∇ Z ← maximize_amount_of_bookable_in_slots_TEST;b_j;b_k;from;to;duration
+        b_j ← new_bookable 2 4 'j' 
+        b_k ← new_bookable 2 4 'k'
+        from ← (1 (⍬,⊂1))
+        to ← (1 (⍬,⊂3))
+        duration ← 2
+        #.Booking.book b_j (⍬,⊂(1 (1 4)))
+        #.Booking.book b_k (⍬,⊂(1 (⍬,4)))
+        #.UT.expect ← (⍬,⊂(1 (2 3)))
+        Z ← #.Booking.maximize_bookables (b_j b_k) (from to duration)
+∇
+
 ∇ Z ← new_bookable Args;periods;slots_per_period;name        
         (periods slots_per_period name) ← Args
         dimensions ← periods slots_per_period
