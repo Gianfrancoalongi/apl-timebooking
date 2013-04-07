@@ -64,4 +64,14 @@
         Z ← #.Booking.indices_musts_and_maximize_could musts could duration
 ∇
 
+∇ Z ← maximizing_amount_of_attending_TEST
+        called ← ⊂ (1 1 0 0 0 0)
+        called,← ⊂ (0 2 0 0 0 3)
+        called,← ⊂ (0 0 0 0 0 0)
+        called,← ⊂ (0 4 4 0 0 5)
+        duration ← 2
+        #.UT.expect ← 4 5
+        Z ← #.Booking.indices_maximizing_attending called duration
+∇
+
 :EndNameSpace

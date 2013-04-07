@@ -41,4 +41,9 @@
         Z ← ((¯1+(⍴array)) ⍴ ¯1) ≡ elems_diff
 ∇
 
+∇ Z ← indices_maximizing_attending args;called;duration
+        (called duration) ← args
+        Z ← 4 5
+∇
+
 :EndNameSpace
