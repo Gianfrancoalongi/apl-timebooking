@@ -44,14 +44,14 @@
         Z ← #.Booking.indices_musts_and_maximize_could musts could duration        
 ∇
 
-∇ Z ← musts_and_maximize_could_but_musts_can_not_one_fully_booked_TEST
-        musts ← ⊂(1 1 1 1 2 2)
-        musts,← ⊂(0 3 0 0 0 4)
-        could ← ⊂(5 5 5 0 6 6)
-        could,← ⊂(0 0 7 0 0 0)
+∇ Z ← musts_and_maximize_could_first_possible_group_TEST
+        musts ← ⊂(0 0 0 0 0 0)
+        musts,← ⊂(0 0 0 0 0 0)
+        could ← ⊂(0 0 0 0 0 0)
+        could,← ⊂(0 0 0 0 0 0)
         duration ← 2
-        #.UT.expect ← ⍬
-        Z ← #.Booking.indices_musts_and_maximize_could musts could duration        
+        #.UT.expect ← 1 2
+        Z ← #.Booking.indices_musts_and_maximize_could musts could duration
 ∇
 
 :EndNameSpace
