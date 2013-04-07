@@ -54,4 +54,14 @@
         Z ← #.Booking.indices_musts_and_maximize_could musts could duration
 ∇
 
+∇ Z ← musts_and_maximize_more_extensive_TEST
+        musts ← ⊂(1 1 0 0 0 0)
+        musts,← ⊂(0 0 0 0 0 2)
+        could ← ⊂(3 0 0 4 4 4)
+        could,← ⊂(5 5 0 0 0 0)
+        duration ← 3
+        #.UT.expect ← 3 4 5
+        Z ← #.Booking.indices_musts_and_maximize_could musts could duration
+∇
+
 :EndNameSpace
