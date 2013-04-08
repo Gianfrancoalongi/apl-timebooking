@@ -41,11 +41,11 @@
         Z ← ((¯1+(⍴array)) ⍴ ¯1) ≡ elems_diff
 ∇
 
-∇ Z ← indices_maximizing_attending args;called;duration;attending_per_slot
+∇ Z ← indices_maximizing_attending args;called;duration;attending_per_slot;valid;total_per_valid_slot
         (called duration) ← args
         attending_per_slot ← free_intersecting called
         valid ← generate_valid_index_groups_based_on_duration (⍳⍴⊃called) duration
-        total_per_valid_slot ← { 1 + attending_per_slot[⍵] } ¨ valid        
+        total_per_valid_slot ← { 1 + attending_per_slot[⍵] } ¨ valid
         Z ← ⊃ valid[ ⍒  +/ ¨ total_per_valid_slot ]
 ∇
 
