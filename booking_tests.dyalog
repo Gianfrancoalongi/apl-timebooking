@@ -84,4 +84,14 @@
         Z ← #.Booking.indices_of_slots_maximizing_attending called duration
 ∇
 
+∇ Z ← maximizing_amount_of_attending_but_duration_too_long_TEST
+        called ← ⊂ (0 0 0)
+        called,← ⊂ (0 0 0)
+        called,← ⊂ (0 0 0)
+        called,← ⊂ (0 0 0)
+        duration ← 4
+        #.UT.expect ← ⍬
+        Z ← #.Booking.indices_of_slots_maximizing_attending called duration
+∇
+
 :EndNameSpace

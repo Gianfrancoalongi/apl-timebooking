@@ -29,7 +29,7 @@
 ∇ Z ← indices_of_slots_maximizing_attending args;called;duration;attending_per_slot;valid;total_per_valid_slot
         (called duration) ← args
         attending_per_slot ← total_free_per_slot called
-        :IF ((⍴attending_per_slot)⍴ 0) ≡ attending_per_slot
+        :IF (duration > ⍴ attending_per_slot) ∨ (no_attending attending_per_slot)
                 Z ← ⍬
         :Else
                 valid ← generate_valid_index_groups_based_on_duration (⍳⍴⊃called) duration
@@ -53,4 +53,7 @@
         Z ← ((¯1+(⍴array)) ⍴ ¯1) ≡ elems_diff
 ∇
 
+∇ Z ← no_attending array
+        Z ← 0 = + / array
+∇
 :EndNameSpace
