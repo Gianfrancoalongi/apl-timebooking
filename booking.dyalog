@@ -1,15 +1,15 @@
 :NameSpace Booking
 
-∇ Z ← free_intersecting array_of_slots
+∇ Z ← total_free_per_slot array_of_slots
         Z ← + ⌿ ↑ 0∘= ¨ array_of_slots
 ∇
 
-∇ Z ← indices_free_intersecting array_of_slots
-        Z ← ⍒ free_intersecting array_of_slots
+∇ Z ← sorted_indices_of_total_free_per_slot array_of_slots
+        Z ← ⍒ total_free_per_slot array_of_slots
 ∇
 
 ∇ Z ← indices_of_free_across_all_slots array_of_slots;intersections
-        intersections ← free_intersecting array_of_slots
+        intersections ← total_free_per_slot array_of_slots
         Z ← ((⍴array_of_slots) = intersections) / ⍳⍴intersections
 ∇
 
@@ -20,7 +20,7 @@
         :IF ⍬ ≡ valid
                 Z ← ⍬
         :Else
-                coulds_per_slot ← free_intersecting could
+                coulds_per_slot ← total_free_per_slot could
                 total_per_valid_slot ← { 1 + coulds_per_slot[⍵] } ¨ valid
                 Z ← ⊃ valid[ ⍒ +/ ¨ total_per_valid_slot ]
         :EndIf
@@ -43,7 +43,7 @@
 
 ∇ Z ← indices_maximizing_attending args;called;duration;attending_per_slot;valid;total_per_valid_slot
         (called duration) ← args
-        attending_per_slot ← free_intersecting called
+        attending_per_slot ← total_free_per_slot called
         valid ← generate_valid_index_groups_based_on_duration (⍳⍴⊃called) duration
         total_per_valid_slot ← { 1 + attending_per_slot[⍵] } ¨ valid
         Z ← ⊃ valid[ ⍒  +/ ¨ total_per_valid_slot ]
