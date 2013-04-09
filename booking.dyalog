@@ -29,9 +29,13 @@
 ∇ Z ← indices_of_slots_maximizing_attending args;called;duration;attending_per_slot;valid;total_per_valid_slot
         (called duration) ← args
         attending_per_slot ← total_free_per_slot called
-        valid ← generate_valid_index_groups_based_on_duration (⍳⍴⊃called) duration
-        total_per_valid_slot ← { 1 + attending_per_slot[⍵] } ¨ valid
-        Z ← ⊃ valid[ ⍒  +/ ¨ total_per_valid_slot ]
+        :IF ((⍴attending_per_slot)⍴ 0) ≡ attending_per_slot
+                Z ← ⍬
+        :Else
+                valid ← generate_valid_index_groups_based_on_duration (⍳⍴⊃called) duration
+                total_per_valid_slot ← { 1 + attending_per_slot[⍵] } ¨ valid
+                Z ← ⊃ valid[ ⍒  +/ ¨ total_per_valid_slot ]
+        :EndIf
 ∇
 
 ∇ Z ← generate_valid_index_groups_based_on_duration arg;indices;duration;groups
