@@ -71,7 +71,7 @@
         called,← ⊂ (0 4 4 0 0 5)
         duration ← 2
         #.UT.expect ← 4 5
-        Z ← #.Booking.indices_maximizing_attending called duration
+        Z ← #.Booking.indices_of_slots_maximizing_attending called duration
 ∇
 
 :EndNameSpace
