@@ -13,7 +13,7 @@
         Z ← ((⍴array_of_slots) = intersections) / ⍳⍴intersections
 ∇
 
-∇ Z ← indices_musts_and_maximize_could args;must;could;duration;musts_indices;valid;coulds_per_slot;total_per_valid_slot
+∇ Z ← indices_of_slots_with_all_musts_and_maximizing_could args;must;could;duration;musts_indices;valid;coulds_per_slot;total_per_valid_slot
         (must could duration) ← args
         musts_indices ← indices_of_free_across_all_slots must
         valid ← generate_valid_index_groups_based_on_duration musts_indices duration
