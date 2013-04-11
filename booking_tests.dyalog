@@ -109,7 +109,16 @@
         rooms,← ⊂(3 3 0)
         rooms,← ⊂(0 4 0)
         duration ← 2
-        #.UT.expect ← 1
+        #.UT.expect ← 1,⍬
+        Z ← #.Booking.indices_of_rooms_that_can_hold_meeting rooms duration
+∇
+
+∇ Z ← indices_of_rooms_that_can_hold_meeting_all_can_TEST;rooms;duration
+        rooms ← ⊂(0 0 0)
+        rooms,← ⊂(0 0 0)
+        rooms,← ⊂(0 0 0)
+        duration ← 2
+        #.UT.expect ← 1 2 3
         Z ← #.Booking.indices_of_rooms_that_can_hold_meeting rooms duration
 ∇
 

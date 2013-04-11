@@ -42,7 +42,7 @@
         (rooms duration) ← args
         indices_of_free_slots ← { (⍵ = 0)/⍳⍴⍵ } ¨ rooms
         slot_groups ← { generate_valid_index_groups_based_on_duration ⍵ duration } ¨ indices_of_free_slots
-        Z ← ⊃ (⍬∘≢ ¨ slot_groups) / ⍳⍴rooms
+        Z ← (⊃,/(⊂0)∘≠∘⍴ ¨ slot_groups)/ ⍳⍴rooms
 ∇
 
 ∇ Z ← generate_valid_index_groups_based_on_duration arg;indices;duration;groups
