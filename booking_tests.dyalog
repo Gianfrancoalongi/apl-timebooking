@@ -122,4 +122,12 @@
         Z ← #.Booking.indices_of_rooms_that_can_hold_meeting rooms duration
 ∇
 
+∇ Z ← indices_of_rooms_that_can_hold_meeting_none_can_TEST;rooms;duration
+        rooms ← ⊂(1 1 1)
+        rooms,← ⊂(2 2 2)
+        duration ← 2
+        #.UT.expect ← ⍬
+        Z ← #.Booking.indices_of_rooms_that_can_hold_meeting rooms duration
+∇
+
 :EndNameSpace
