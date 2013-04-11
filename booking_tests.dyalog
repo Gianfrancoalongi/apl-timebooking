@@ -104,4 +104,13 @@
         Z ← #.Booking.indices_of_slots_maximizing_attending called duration
 ∇
 
+∇ Z ← indices_of_rooms_that_can_hold_meeting_TEST;rooms;duration
+        rooms ← ⊂(0 0 0)
+        rooms,← ⊂(3 3 0)
+        rooms,← ⊂(0 4 0)
+        duration ← 2
+        #.UT.expect ← 1
+        Z ← #.Booking.indices_of_rooms_that_can_hold_meeting rooms duration
+∇
+
 :EndNameSpace
