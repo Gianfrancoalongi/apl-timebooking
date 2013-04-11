@@ -41,18 +41,8 @@
 ∇ Z ← indices_of_rooms_that_can_hold_meeting args;rooms;duration;indices_of_free_slots
         (rooms duration) ← args
         indices_of_free_slots ← { (⍵ = 0)/⍳⍴⍵ } ¨ rooms
-        slot_groups ← { groups_of_timeslots_ascending_by_one duration ⍵ } ¨ indices_of_free_slots
+        slot_groups ← { generate_valid_index_groups_based_on_duration ⍵ duration } ¨ indices_of_free_slots
         Z ← ⊃ (⍬∘≢ ¨ slot_groups) / ⍳⍴rooms
-∇
-
-∇ Z ← groups_of_timeslots_ascending_by_one args;indices;duration;groups
-        (duration indices) ← args
-        :IF duration ≥ ⍴indices
-                Z ← ⍬
-        :Else
-                groups ← duration ,/ (indices,⍬)
-                Z ← (elements_ascend_by_one ¨ groups) / groups
-        :EndIf
 ∇
 
 ∇ Z ← generate_valid_index_groups_based_on_duration arg;indices;duration;groups
