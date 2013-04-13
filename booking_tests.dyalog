@@ -137,4 +137,14 @@
         #.UT.expect ← ⍬
         Z ← #.Booking.indices_of_rooms_that_can_hold_meeting rooms duration
 ∇
+
+∇ Z ← index_of_room_that_maximizes_the_amount_of_attending_TEST;rooms;called;duration
+        rooms ← ⊂(0 0 0 0)
+        rooms,← ⊂(1 0 0 0)
+        called ← ⊂(0 0 0 0)
+        called,← ⊂(0 0 2 2)
+        duration ← 3
+        #.UT.expect ← 1
+        Z ← #.Booking.index_of_room_maximizing_attending rooms called duration
+∇
 :EndNameSpace

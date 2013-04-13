@@ -45,6 +45,14 @@
         Z ← (⊃,/(⊂0)∘≠∘⍴ ¨ slot_groups)/ ⍳⍴rooms
 ∇
 
+∇ Z ← index_of_room_maximizing_attending args;rooms;called;duration;possible;indices_per_room;attending_per_room
+        (rooms called duration) ← args
+        possible ← indices_of_rooms_that_can_hold_meeting rooms duration
+        indices_per_room ← { indices_of_slots_with_all_musts_and_maximizing_could (rooms[⍵],⍬) called duration } ¨ possible
+        attending_per_room ←  { + / total_free_per_slot rooms[possible[⍵]],called } ¨ ⍳⍴possible
+        Z ← ⊃ ⍒ attending_per_room
+∇
+
 ∇ Z ← generate_valid_index_groups_based_on_duration arg;indices;duration;groups
         (indices duration) ← arg
         :IF (duration > ⍴indices)
