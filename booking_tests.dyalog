@@ -147,4 +147,14 @@
         #.UT.expect ← 1
         Z ← #.Booking.index_of_room_maximizing_attending rooms called duration
 ∇
+
+∇ Z ← index_of_room_maximizing_attending_picks_first_TEST
+        rooms ← ⊂(0 0 0 0)
+        rooms,← ⊂(0 0 0 0)
+        called ← ⊂(0 0 0 0)
+        called,← ⊂(0 0 2 2)
+        duration ← 2
+        #.UT.expect ← 1
+        Z ← #.Booking.index_of_room_maximizing_attending rooms called duration        
+∇
 :EndNameSpace
