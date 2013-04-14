@@ -104,7 +104,7 @@
         Z ← #.Booking.indices_of_slots_maximizing_attending called duration
 ∇
 
-∇ Z ← indices_of_rooms_that_can_hold_meeting_TEST;rooms;duration
+∇ Z ← indices_of_rooms_that_can_hold_meeting_TEST
         rooms ← ⊂(0 0 0)
         rooms,← ⊂(3 3 0)
         rooms,← ⊂(0 4 0)
@@ -113,7 +113,7 @@
         Z ← #.Booking.indices_of_rooms_that_can_hold_meeting rooms duration
 ∇
 
-∇ Z ← indices_of_rooms_that_can_hold_meeting_all_can_TEST;rooms;duration
+∇ Z ← indices_of_rooms_that_can_hold_meeting_all_can_TEST
         rooms ← ⊂(0 0 0)
         rooms,← ⊂(0 0 0)
         rooms,← ⊂(0 0 0)
@@ -122,7 +122,7 @@
         Z ← #.Booking.indices_of_rooms_that_can_hold_meeting rooms duration
 ∇
 
-∇ Z ← indices_of_rooms_that_can_hold_meeting_none_can_TEST;rooms;duration
+∇ Z ← indices_of_rooms_that_can_hold_meeting_none_can_TEST
         rooms ← ⊂(1 1 1)
         rooms,← ⊂(2 2 2)
         duration ← 2
@@ -130,7 +130,7 @@
         Z ← #.Booking.indices_of_rooms_that_can_hold_meeting rooms duration
 ∇
 
-∇ Z ← indices_of_rooms_that_can_hold_meeting_but_duration_too_long_TEST;rooms;duration
+∇ Z ← indices_of_rooms_that_can_hold_meeting_but_duration_too_long_TEST
         rooms ← ⊂(0 0 0)
         rooms,← ⊂(0 0 0)
         duration ← 4
@@ -138,7 +138,7 @@
         Z ← #.Booking.indices_of_rooms_that_can_hold_meeting rooms duration
 ∇
 
-∇ Z ← index_of_room_that_maximizes_the_amount_of_attending_TEST;rooms;called;duration
+∇ Z ← index_of_room_that_maximizes_the_amount_of_attending_TEST
         rooms ← ⊂(0 0 0 0)
         rooms,← ⊂(1 0 0 0)
         called ← ⊂(0 0 0 0)
