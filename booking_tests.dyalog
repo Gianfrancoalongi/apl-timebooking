@@ -168,4 +168,14 @@
         Z ← #.Booking.index_of_room_maximizing_attending rooms called duration
 ∇
 
+∇ Z ← index_of_room_maximizing_attending_duration_too_long_TEST;rooms;called;duration
+        rooms ← ⊂(0 0)
+        rooms,← ⊂(0 0)
+        called ← ⊂(0 0)
+        called,← ⊂(0 0)
+        duration ← 3
+        #.UT.expect ← ⍬
+        Z ← #.Booking.index_of_room_maximizing_attending rooms called duration
+∇
+
 :EndNameSpace
