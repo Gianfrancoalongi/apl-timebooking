@@ -13,7 +13,7 @@
         Z ← ((⍴array_of_slots) = free_per_slot) / ⍳ ⍴ free_per_slot
 ∇
 
-∇ Z ← indices_of_slots_with_all_musts_and_maximizing_could (must could duration);musts_indices;valid;coulds_per_slot;total_per_valid_slot
+∇ Z ← indices_of_slots_with_all_musts_and_maximizing_could (must could duration);valid;coulds_per_slot;total_per_valid_slot
         base_indices ← indices_of_free_across_all_slots must
         valid ← generate_valid_index_groups_based_on_duration base_indices duration
         :IF ⍬ ≡ valid
