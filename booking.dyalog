@@ -42,7 +42,7 @@
         (rooms duration) ← args
         indices_of_free_slots ← { (⍵ = 0)/⍳⍴⍵ } ¨ rooms
         slot_groups ← { generate_valid_index_groups_based_on_duration ⍵ duration } ¨ indices_of_free_slots
-        Z ← (⊃,/(⊂0)∘≠∘⍴ ¨ slot_groups)/ ⍳⍴rooms
+        Z ← (0≠⊃∘⍴ ¨ slot_groups)/ ⍳⍴rooms
 ∇
 
 ∇ Z ← index_of_room_maximizing_attending args;rooms;called;duration;possible;indices_per_room;attending_per_room
@@ -68,8 +68,7 @@
 ∇
 
 ∇ Z ← elements_ascend_by_one array;elems_diff
-        elems_diff ← 2 -/ array
-        Z ← ((¯1+(⍴array)) ⍴ ¯1) ≡ elems_diff
+        Z ← ¯1 ∧.= 2 -/ array
 ∇
 
 ∇ Z ← no_attending array
