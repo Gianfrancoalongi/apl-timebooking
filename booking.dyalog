@@ -13,8 +13,7 @@
         Z ← ((⍴array_of_slots) = free_per_slot) / ⍳ ⍴ free_per_slot
 ∇
 
-∇ Z ← indices_of_slots_with_all_musts_and_maximizing_could args;must;could;duration;musts_indices;valid;coulds_per_slot;total_per_valid_slot
-        (must could duration) ← args
+∇ Z ← indices_of_slots_with_all_musts_and_maximizing_could (must could duration);musts_indices;valid;coulds_per_slot;total_per_valid_slot
         base_indices ← indices_of_free_across_all_slots must
         valid ← generate_valid_index_groups_based_on_duration base_indices duration
         :IF ⍬ ≡ valid
@@ -26,8 +25,7 @@
         :EndIf
 ∇
 
-∇ Z ← indices_of_slots_maximizing_attending args;called;duration;attending_per_slot;valid;total_per_valid_slot
-        (called duration) ← args
+∇ Z ← indices_of_slots_maximizing_attending (called duration);attending_per_slot;valid;total_per_valid_slot
         attending_per_slot ← total_free_per_slot called
         :IF (duration > ⍴ attending_per_slot) ∨ (no_attending attending_per_slot)
                 Z ← ⍬
@@ -38,15 +36,13 @@
         :EndIf
 ∇
 
-∇ Z ← indices_of_rooms_that_can_hold_meeting args;rooms;duration;indices_of_free_slots
-        (rooms duration) ← args
+∇ Z ← indices_of_rooms_that_can_hold_meeting (rooms duration);indices_of_free_slots
         indices_of_free_slots ← { (⍵ = 0)/⍳⍴⍵ } ¨ rooms
         slot_groups ← { generate_valid_index_groups_based_on_duration ⍵ duration } ¨ indices_of_free_slots
         Z ← (0≠⊃∘⍴ ¨ slot_groups)/ ⍳⍴rooms
 ∇
 
-∇ Z ← index_of_room_maximizing_attending args;rooms;called;duration;possible;indices_per_room;attending_per_room
-        (rooms called duration) ← args
+∇ Z ← index_of_room_maximizing_attending (rooms called duration);possible;indices_per_room;attending_per_room
         possible ← indices_of_rooms_that_can_hold_meeting rooms duration
         :IF possible ≡ ⍬
                 Z ← ⍬
@@ -57,8 +53,7 @@
         :EndIF
 ∇
 
-∇ Z ← generate_valid_index_groups_based_on_duration arg;indices;duration;groups
-        (indices duration) ← arg
+∇ Z ← generate_valid_index_groups_based_on_duration (indices duration);groups
         :IF (duration > ⍴indices)
                 Z ← ⍬
         :Else
