@@ -1,27 +1,27 @@
 :NameSpace Booking_tests
 
 ∇ Z ← free_per_slot_TEST
-        slots ← ⊂(0 0 0)
-        slots,← ⊂(0 0 0)
-        slots,← ⊂(0 0 0)
+        calendars ← ⊂(0 0 0)
+        calendars,← ⊂(0 0 0)
+        calendars,← ⊂(0 0 0)
         #.UT.expect ← 3 3 3
-        Z ← #.Booking.free_per_slot slots
+        Z ← #.Booking.free_per_slot calendars
 ∇
 
 ∇ Z ← sorted_indices_of_free_per_slot_TEST
-        slots ← ⊂(1 0 0 0)
-        slots,← ⊂(0 3 0 0)
-        slots,← ⊂(4 0 5 0)
+        calendars ← ⊂(1 0 0 0)
+        calendars,← ⊂(0 3 0 0)
+        calendars,← ⊂(4 0 5 0)
         #.UT.expect ← 4 2 3 1
-        Z ← #.Booking.sorted_indices_of_free_per_slot slots
+        Z ← #.Booking.sorted_indices_of_free_per_slot calendars
 ∇
 
 ∇ Z ← indices_of_free_across_all_slots_TEST
-        slots ← ⊂(1 0 2 0)
-        slots,← ⊂(0 0 3 0)
-        slots,← ⊂(4 0 5 0)
+        calendars ← ⊂(1 0 2 0)
+        calendars,← ⊂(0 0 3 0)
+        calendars,← ⊂(4 0 5 0)
         #.UT.expect ← 2 4
-        Z ← #.Booking.indices_of_free_across_all_slots slots
+        Z ← #.Booking.indices_of_free_across_all_slots calendars
 ∇
 
 ∇ Z ← all_musts_and_maximize_could_TEST
