@@ -20,7 +20,7 @@
                 Z ← ⍬
         :Else
                 coulds_per_slot ← total_free_per_slot could
-                total_per_valid_slot ← { 1 + coulds_per_slot[⍵] } ¨ valid
+                total_per_valid_slot ← 1 + coulds_per_slot[valid]
                 Z ← ⊃ valid[ ⍒ +/ ¨ total_per_valid_slot ]
         :EndIf
 ∇
@@ -31,7 +31,7 @@
                 Z ← ⍬
         :Else
                 valid ← generate_valid_index_groups_based_on_duration (⍳⍴⊃called) duration
-                total_per_valid_slot ← { 1 + attending_per_slot[⍵] } ¨ valid
+                total_per_valid_slot ← 1 + attending_per_slot[valid]
                 Z ← ⊃ valid[ ⍒  +/ ¨ total_per_valid_slot ]
         :EndIf
 ∇
