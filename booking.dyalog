@@ -1,7 +1,7 @@
 :NameSpace Booking
 
 ∇ Z ← total_free_per_slot array_of_slots
-        Z ← + ⌿ ↑ 0∘= ¨ array_of_slots
+        Z ← +/0= array_of_slots
 ∇
 
 ∇ Z ← sorted_indices_of_total_free_per_slot array_of_slots
