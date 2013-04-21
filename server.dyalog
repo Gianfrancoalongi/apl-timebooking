@@ -2,7 +2,7 @@
 
 ∇ Start port;r;DONE;wait
  #.DRC.Init ''
- r ← #.DRC.Srv 'Booking Server' '' port ''
+ r ← #.DRC.Srv 'Booking Server' '' port 'Text'
  :If 0≠⊃r
          ⎕ ← 'Error: ',⍕r
  :Else
