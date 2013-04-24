@@ -4,7 +4,7 @@
         name ← 'Booking Server'
         mode ← 'Text'
         #.DRC.Init ''
-        r ← #.DRC.Srv name '' port mode 1000 ('EOM' (⎕UCS 13 10))
+        r ← #.DRC.Srv name '' port mode
         :If 0≠⊃r
                 ⎕ ← 'Error: ',⍕r
         :Else
@@ -40,7 +40,7 @@
      :Case ' BlockLast '
              ⎕ ← 'Received [',event[4],'] and lost connection'
      :Else 
-             ⎕ ← 'Not maching any other:[',event_name,'][',(⍴event_name),']'
+             ⎕ ← 'Not maching any other:[',event_name,']'
      :EndSelect
 ∇
 
