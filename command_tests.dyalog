@@ -12,4 +12,10 @@
         Z ← #.Command.parse text
 ∇
 
+∇ Z ← lowercases_all_alphabetic_characters_TEST
+        text ← 'GeT pErSoN'
+        #.UT.expect ← 'get' 'person'
+        Z ← #.Command.parse text
+∇
+
 :EndNameSpace

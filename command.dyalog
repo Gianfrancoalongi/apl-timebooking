@@ -2,8 +2,14 @@
 
 ∇ Z ← parse text
         ⎕ML ← 3
-        Z ← (' '≠ text) ⊂ text
+        Z ← { (' '≠ ⍵) ⊂ ⍵ } lowercase ¨ text
         ⎕ML ← 0
+∇
+
+∇ Z ← lowercase char;from;to
+        from ← 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        to ← 'abcdefghijklmnopqrstuvwxyz',char
+        Z ←to[from ⍳ char]        
 ∇
 
 :EndNameSpace
