@@ -6,4 +6,10 @@
         Z ← #.Command.parse text
 ∇
 
+∇ Z ← trims_whitespaces_TEST
+        text ← ' get person '
+        #.UT.expect ← 'get' 'person'
+        Z ← #.Command.parse text
+∇
+
 :EndNameSpace
