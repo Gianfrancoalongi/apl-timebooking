@@ -27,27 +27,24 @@
         :EndWhile
 ∇
 
-∇ handle_event (name event);event_name;data;reply;data
+∇ handle_event (name event);event_name
      event_name ← ⍕event[3]
      :Select event_name
      :Case ' Connect '
              ⎕ ← 'Connected'
      :Case ' Block '
-             data ← ⍕event[4]
-             ⎕ ← 'Received: ',data
-             reply ← generate_reply data
-             ⎕ ← 'Replying: '
-             ⎕ ← reply
-             #.DRC.Send event[2] reply 1
-     :Case ' BlockLast '
-             ⎕ ← 'Received [',event[4],'] and lost connection'
+             handle_data_received event
      :Else 
-             ⎕ ← 'Not maching any other:[',event_name,']'
      :EndSelect
 ∇
 
+∇ Z ← handle_data_received event;reply
+     reply ← generate_reply ⍕event[2]
+     #.DRC.Send event[1] reply 1
+∇
+
 ∇ Z ← generate_reply data;command
-     command ← parse_command data
+     command ← #.Command.parse data
      :Select ⊃ command
      :Case 'get'             
              Z ← 'you got it!'
@@ -55,7 +52,5 @@
              Z ← 'booked you'
      :EndSelect
 ∇
-
-∇ Z ← parse_command
 
 :EndNameSpace
