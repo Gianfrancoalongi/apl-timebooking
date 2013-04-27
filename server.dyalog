@@ -46,11 +46,16 @@
      :EndSelect
 ∇
 
-∇ Z ← generate_reply data
-     :Select data
-     :Case ' get person1 '
-             Z ← ⊃,/ { (⍕⍺),(⎕UCS 10),(⍕⍵) } /↓4 4⍴⍳16
+∇ Z ← generate_reply data;command
+     command ← parse_command data
+     :Select ⊃ command
+     :Case 'get'             
+             Z ← 'you got it!'
+     :Case 'book' 
+             Z ← 'booked you'
      :EndSelect
 ∇
+
+∇ Z ← parse_command
 
 :EndNameSpace
