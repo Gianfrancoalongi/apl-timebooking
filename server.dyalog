@@ -1,5 +1,7 @@
 :NameSpace Server
 
+calendars ← ⍬
+
 ∇ Start port;r;name;mode
         name ← 'Booking Server'
         mode ← 'Text'
@@ -8,6 +10,7 @@
         :If 0≠⊃r
                 ⎕ ← 'Error: ',⍕r
         :Else
+                set_up_calendars
                 ⎕ ← name,' Started [',⍕port,']'
                 connect_receive_loop name
                 ⎕ ← name, 'Terminating'
@@ -39,18 +42,26 @@
 ∇
 
 ∇ Z ← handle_data_received event;reply
-     reply ← generate_reply ⍕event[2]
-     #.DRC.Send event[1] reply 1
+     reply ← generate_reply ⍕event[4]
+     #.DRC.Send event[2] reply 1
 ∇
 
 ∇ Z ← generate_reply data;command
      command ← #.Command.parse data
      :Select ⊃ command
-     :Case 'get'             
-             Z ← 'you got it!'
-     :Case 'book' 
-             Z ← 'booked you'
+     :Case 'add'
+             Z ← add_new_bookable 1↓command
      :EndSelect
+∇
+
+∇ Z ← add_new_bookable data
+     calendars,← ⊂((⊃data) ((0 0 0) (0 0 0) (0 0 0)))
+     Z ← 'added a new calendar for ',⊃data
+∇
+
+∇ set_up_calendars
+     calendars ← ⊂('person1' ((0 0 0) (0 0 0) (0 0 0)))
+     calendars,← ⊂('room1'   ((0 0 0) (0 0 0) (0 0 0)))
 ∇
 
 :EndNameSpace
