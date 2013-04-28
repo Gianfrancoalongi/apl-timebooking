@@ -55,13 +55,13 @@ calendars ← ⍬
 ∇
 
 ∇ Z ← add_new_bookable data
-     calendars,← ⊂((⊃data) ((0 0 0) (0 0 0) (0 0 0)))
+     calendars,← ⊂#.Calendar.new_calendar (⊃data) 3 3
      Z ← 'added a new calendar for ',⊃data
 ∇
 
 ∇ set_up_calendars
-     calendars ← ⊂('person1' ((0 0 0) (0 0 0) (0 0 0)))
-     calendars,← ⊂('room1'   ((0 0 0) (0 0 0) (0 0 0)))
+     calendars ← ⊂#.Calendar.new_calendar 'person1' 3 3
+     calendars,← ⊂#.Calendar.new_calendar 'room1' 3 3
 ∇
 
 :EndNameSpace
