@@ -1,7 +1,7 @@
 :NameSpace Calendar
 
 ∇ Z ← calendar_slice (calendar from to)
-        Z ← (⊃,/calendar)[from,from + ⍳ (to - from)]
+        Z ← (⊃,/⊃1↓calendar)[from,from + ⍳ (to - from)]
 ∇
 
 ∇ Z ← new_calendar (name days slots)
