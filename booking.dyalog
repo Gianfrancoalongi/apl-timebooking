@@ -19,8 +19,12 @@
         :IF ⍬ ≡ valid
                 Z ← ⍬
         :Else
-                could ← free_per_slot could
-                total_per_valid_slot ← { 1 + could[⍵] } ¨ valid
+                :If could ≡ ⍬
+                        total_per_valid_slot ← (⍴valid) ⍴ 1
+                :Else
+                        could ← free_per_slot could
+                        total_per_valid_slot ← { 1 + could[⍵] } ¨ valid
+                :EndIf
                 Z ← ⊃ valid[ ⍒ +/ ¨ total_per_valid_slot ]
         :EndIf
 ∇

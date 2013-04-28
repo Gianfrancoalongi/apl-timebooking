@@ -64,6 +64,15 @@
         Z ← #.Booking.indices_of_slots_with_all_musts_and_maximizing_could musts could duration
 ∇
 
+∇ Z ← musts_but_no_could_TEST
+        musts ← ⊂(1 1 0 0 0 0)
+        musts,← ⊂(0 0 0 0 0 2)
+        could ← ⍬
+        duration ← 3
+        #.UT.expect ← 3 4 5
+        Z ← #.Booking.indices_of_slots_with_all_musts_and_maximizing_could musts could duration
+∇
+
 ∇ Z ← maximizing_amount_of_attending_TEST
         called ← ⊂ (1 1 0 0 0 0)
         called,← ⊂ (0 2 0 0 0 3)

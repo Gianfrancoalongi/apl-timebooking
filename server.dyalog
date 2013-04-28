@@ -53,6 +53,8 @@ calendars ← ⍬
              Z ← add_new_bookable 1↓command
      :Case 'show'
              Z ← show_calendar 1↓command
+     :Case 'book'
+             Z ← book_slots 1↓command
      :EndSelect
 ∇
 
@@ -69,6 +71,16 @@ calendars ← ⍬
 ∇ set_up_calendars
      calendars ← ⊂#.Calendar.new_calendar 'person1' 3 3
      calendars,← ⊂#.Calendar.new_calendar 'room1' 3 3
+∇
+
+∇ Z ← book_slots data;indices;mode;from;to;duration
+     (mode from to duration) ← data[1 2 3 4]
+     indices ← ({ (⊂⊃⍵) ∊ 4↓data } ¨ calendars)/⍳⍴calendars
+     :Select mode
+     :Case 'all'
+             slices ← { #.Calendar.calendar_slice ⍵ (⍎from) (⍎to) } ¨ calendars[indices]
+             Z ← ⍕ #.Booking.indices_of_slots_with_all_musts_and_maximizing_could slices ⍬ (⍎duration)
+     :EndSelect
 ∇
 
 :EndNameSpace
