@@ -51,12 +51,18 @@ calendars ← ⍬
      :Select ⊃ command
      :Case 'add'
              Z ← add_new_bookable 1↓command
+     :Case 'show'
+             Z ← show_calendar 1↓command
      :EndSelect
 ∇
 
 ∇ Z ← add_new_bookable data
      calendars,← ⊂#.Calendar.new_calendar (⊃data) 3 3
      Z ← 'added a new calendar for ',⊃data
+∇
+
+∇ Z ← show_calendar data;r
+     Z ← #.Calendar.visualize ⊃((⊃data)∘≡∘⊃ ¨ calendars)/calendars
 ∇
 
 ∇ set_up_calendars
