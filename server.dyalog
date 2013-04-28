@@ -61,8 +61,9 @@ calendars ← ⍬
      Z ← 'added a new calendar for ',⊃data
 ∇
 
-∇ Z ← show_calendar data;r
-     Z ← #.Calendar.visualize ⊃((⊃data)∘≡∘⊃ ¨ calendars)/calendars
+∇ Z ← show_calendar data;selected
+     selected ← ({ (⊂⊃⍵) ∊ data } ¨ calendars)/calendars
+     Z ← ⊃{⍺,(⎕UCS 10),⍵}/ #.Calendar.visualize ¨ selected
 ∇
 
 ∇ set_up_calendars
