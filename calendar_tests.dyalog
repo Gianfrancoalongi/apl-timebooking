@@ -34,4 +34,10 @@
         Z ← #.Calendar.visualize calendar
 ∇
 
+∇ Z ← visualize_booked_calendar_TEST
+        calendar ← 'person1' ((0 1 0) (0 2 2) (3 0 4))
+        #.UT.expect ← 'person1 ⎕⌹⎕ ⎕⌹⌹ ⌹⎕⌹'
+        Z ← #.Calendar.visualize calendar
+∇
+
 :EndNameSpace
