@@ -28,4 +28,10 @@
         Z ← #.Calendar.new_calendar bookable_name days slots_per_day
 ∇
 
+∇ Z ← visualize_calendar_TEST
+        calendar ← #.Calendar.new_calendar 'person1' 3 3
+        #.UT.expect ← 'person1 ⎕⎕⎕ ⎕⎕⎕ ⎕⎕⎕'
+        Z ← #.Calendar.visualize calendar
+∇
+
 :EndNameSpace

@@ -8,4 +8,9 @@
         Z ← (name (days ⍴⊂(slots ⍴ 0) ))
 ∇
 
+∇ Z ← visualize calendar
+        ⍝ Z ← (⊃calendar) {'⎕⌹'[⎕←0 1 ⍳ ⍵] } ¨ (⊃1↓calendar)
+        Z ← (⊃calendar),' ',⊃{⍺,' ',⍵ }/{'⎕⌹'[0 1 ⍳ ⍵] } ¨ ⊃1↓calendar
+∇
+
 :EndNameSpace
