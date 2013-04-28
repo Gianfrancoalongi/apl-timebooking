@@ -30,13 +30,13 @@
 
 ∇ Z ← visualize_calendar_TEST
         calendar ← #.Calendar.new_calendar 'person1' 3 3
-        #.UT.expect ← 'person1 ⎕⎕⎕ ⎕⎕⎕ ⎕⎕⎕'
+        #.UT.expect ← 'person1 OOO OOO OOO'
         Z ← #.Calendar.visualize calendar
 ∇
 
 ∇ Z ← visualize_booked_calendar_TEST
         calendar ← 'person1' ((0 1 0) (0 2 2) (3 0 4))
-        #.UT.expect ← 'person1 ⎕⌹⎕ ⎕⌹⌹ ⌹⎕⌹'
+        #.UT.expect ← 'person1 OXO OXX XOX'
         Z ← #.Calendar.visualize calendar
 ∇
 

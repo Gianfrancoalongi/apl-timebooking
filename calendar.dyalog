@@ -9,7 +9,7 @@
 ∇
 
 ∇ Z ← visualize calendar
-        Z ← (⊃calendar),' ',⊃{⍺,' ',⍵ }/{'⎕⌹'[0 1 ⍳ 0≠⍵] } ¨ ⊃1↓calendar
+        Z ← (⊃calendar),' ',⊃{⍺,' ',⍵ }/{'OX'[0 1 ⍳ 0≠⍵] } ¨ ⊃1↓calendar
 ∇
 
 :EndNameSpace
