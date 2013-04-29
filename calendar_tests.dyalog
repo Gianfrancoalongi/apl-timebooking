@@ -40,4 +40,12 @@
         Z ← #.Calendar.visualize calendar
 ∇
 
+∇ Z ← mark_slots_as_booked_TEST
+        calendar ← #.Calendar.new_calendar 'room1' 3 3 
+        #.UT.expect ← 'room1' ((0 0 1) (1 0 1) (1 0 0))
+        slots ← 3 4 6 7
+        booking ← 1 
+        Z ← #.Calendar.mark_as_booked calendar slots booking
+∇
+
 :EndNameSpace
