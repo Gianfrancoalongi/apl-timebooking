@@ -73,13 +73,16 @@ calendars ← ⍬
      calendars,← ⊂#.Calendar.new_calendar 'room1' 3 3
 ∇
 
-∇ Z ← book_slots data;indices;mode;from;to;duration
+∇ Z ← book_slots data;indices;mode;from;to;duration;indices;slices;slots;selected
      (mode from to duration) ← data[1 2 3 4]
      indices ← ({ (⊂⊃⍵) ∊ 4↓data } ¨ calendars)/⍳⍴calendars
      :Select mode
      :Case 'all'
-             slices ← { #.Calendar.calendar_slice ⍵ (⍎from) (⍎to) } ¨ calendars[indices]
-             Z ← ⍕ #.Booking.indices_of_slots_with_all_musts_and_maximizing_could slices ⍬ (⍎duration)
+             selected ← calendars[indices]
+             slices ← { #.Calendar.calendar_slice ⍵ (⍎from) (⍎to) } ¨ selected
+             slots ← #.Booking.indices_of_slots_with_all_musts_and_maximizing_could slices ⍬ (⍎duration)
+             calendars[indices] ← { #.Calendar.mark_as_booked ⍵ slots 1 } ¨ selected
+             Z ← 'booked slots ',⍕slots
      :EndSelect
 ∇
 
