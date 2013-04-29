@@ -48,4 +48,12 @@
         Z ← #.Calendar.mark_as_booked calendar slots booking
 ∇
 
+∇ Z ← mark_slots_bug_TEST
+        calendar ← #.Calendar.new_calendar 'person1' 3 3 
+        #.UT.expect ← 'person1' ((1 1 0) (0 0 0) (0 0 0))
+        slots ← 1 2
+        booking ← 1 
+        Z ← #.Calendar.mark_as_booked calendar slots booking
+∇
+
 :EndNameSpace
