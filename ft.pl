@@ -4,7 +4,7 @@ use IO::Socket;
 sub send_receive_test {
     my $sock = new IO::Socket::INET ( 
 	PeerAddr => 'localhost',
-	PeerPort => '52200',
+	PeerPort => '52000',
 	Proto => 'tcp'
 	); 
     die "Could not create socket: $!\n" unless $sock; 

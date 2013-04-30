@@ -74,7 +74,7 @@ calendars ← ⍬
      :Case 'all'
              selected ← calendars[indices]
              slices ← { #.Calendar.calendar_slice ⍵ (⍎from) (⍎to) } ¨ selected
-             slots ← #.Booking.indices_of_slots_with_all_musts_and_maximizing_could slices ⍬ (⍎duration)
+             slots ← (¯1 + ⍎from) + #.Booking.indices_of_slots_with_all_musts_and_maximizing_could slices ⍬ (⍎duration)
              calendars[indices] ← { #.Calendar.mark_as_booked ⍵ slots 1 } ¨ selected
              Z ← 'booked slots ',⍕slots
      :EndSelect
