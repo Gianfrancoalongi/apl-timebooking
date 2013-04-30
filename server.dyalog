@@ -10,7 +10,6 @@ calendars ← ⍬
         :If 0≠⊃r
                 ⎕ ← 'Error: ',⍕r
         :Else
-                set_up_calendars
                 ⎕ ← name,' Started [',⍕port,']'
                 connect_receive_loop name
                 ⎕ ← name, 'Terminating'
@@ -66,11 +65,6 @@ calendars ← ⍬
 ∇ Z ← show_calendar data;selected
      selected ← ({ (⊂⊃⍵) ∊ data } ¨ calendars)/calendars
      Z ← ⊃{⍺,(⎕UCS 10),⍵}/ #.Calendar.visualize ¨ selected
-∇
-
-∇ set_up_calendars
-     calendars ← ⊂#.Calendar.new_calendar 'person1' 3 3
-     calendars,← ⊂#.Calendar.new_calendar 'room1' 3 3
 ∇
 
 ∇ Z ← book_slots data;indices;mode;from;to;duration;indices;slices;slots;selected
