@@ -46,19 +46,22 @@ calendars ← ⍬
      Z ← done
 ∇
 
-∇ Z ← generate_reply data;command;rest
+∇ Z ← generate_reply data;command;rest;done;reply
      command ← #.Command.parse data
      rest ← 1↓command
+     done ← 0
      :Select ⊃ command
      :Case 'add'
-             Z ← 0 (add_new_bookable rest)
+             reply ← add_new_bookable rest
      :Case 'show'
-             Z ← 0 (show_calendar rest)
+             reply ← show_calendar rest
      :Case 'book'
-             Z ← 0 (book_slots rest)
+             reply ← book_slots rest
      :Case 'stop'
-             Z ← 1 'stopped server'
+             reply ← 'stopped server'
+             done ← 1
      :EndSelect
+     Z ← done reply
 ∇
 
 ∇ Z ← add_new_bookable data
