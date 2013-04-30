@@ -22,38 +22,42 @@ calendars ← ⍬
         :While ~DONE
                 event ← #.DRC.Wait name 10000
                 :If 0=⊃event
-                        handle_event name event
-                :Else
-                        DONE ← 1
+                        DONE ← handle_event name event
                 :EndIf
         :EndWhile
 ∇
 
-∇ handle_event (name event);event_name
+∇ Z ← handle_event (name event);event_name
      event_name ← ⍕event[3]
      :Select event_name
      :Case ' Connect '
              ⎕ ← 'Connected'
+             Z ← 0
      :Case ' Block '
-             handle_data_received event
-     :Else 
+             Z ← handle_data_received event
+     :Else
+             Z ← 0
      :EndSelect
 ∇
 
-∇ Z ← handle_data_received event;reply
-     reply ← generate_reply ⍕event[4]
+∇ Z ← handle_data_received event;reply;done
+     (done reply)← generate_reply ⍕event[4]
      #.DRC.Send event[2] reply 1
+     Z ← done
 ∇
 
-∇ Z ← generate_reply data;command
+∇ Z ← generate_reply data;command;rest
      command ← #.Command.parse data
+     rest ← 1↓command
      :Select ⊃ command
      :Case 'add'
-             Z ← add_new_bookable 1↓command
+             Z ← 0 (add_new_bookable rest)
      :Case 'show'
-             Z ← show_calendar 1↓command
+             Z ← 0 (show_calendar rest)
      :Case 'book'
-             Z ← book_slots 1↓command
+             Z ← 0 (book_slots rest)
+     :Case 'stop'
+             Z ← 1 'stopped server'
      :EndSelect
 ∇
 
