@@ -74,17 +74,22 @@ calendars ← ⍬
      Z ← ⊃{⍺,(⎕UCS 10),⍵}/ #.Calendar.visualize ¨ selected
 ∇
 
-∇ Z ← book_slots data;indices;mode;from;to;duration;indices;slices;slots;selected
-     (mode from to duration) ← data[1 2 3 4]
-     indices ← ({ (⊂⊃⍵) ∊ 4↓data } ¨ calendars)/⍳⍴calendars
+∇ Z ← book_slots data;mode
+     mode ← ⊃data
      :Select mode
      :Case 'all'
-             selected ← calendars[indices]
-             slices ← { #.Calendar.calendar_slice ⍵ (⍎from) (⍎to) } ¨ selected
-             slots ← (¯1 + ⍎from) + #.Booking.indices_of_slots_with_all_musts_and_maximizing_could slices ⍬ (⍎duration)
-             calendars[indices] ← { #.Calendar.mark_as_booked ⍵ slots 1 } ¨ selected
-             Z ← 'booked slots ',⍕slots
+             Z ← book_all data
      :EndSelect
+∇
+
+∇ Z ← book_all data;from;to;duration;indices;slices;slots;selected
+     (from to duration) ← data[2 3 4]
+     indices ← ({ (⊂⊃⍵) ∊ 4↓data } ¨ calendars)/⍳⍴calendars
+     selected ← calendars[indices]
+     slices ← { #.Calendar.calendar_slice ⍵ (⍎from) (⍎to) } ¨ selected
+     slots ← (¯1 + ⍎from) + #.Booking.indices_of_slots_with_all_musts_and_maximizing_could slices ⍬ (⍎duration)
+     calendars[indices] ← { #.Calendar.mark_as_booked ⍵ slots 1 } ¨ selected
+     Z ← 'booked slots ',⍕slots
 ∇
 
 :EndNameSpace
