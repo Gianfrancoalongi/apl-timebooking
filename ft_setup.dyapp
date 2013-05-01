@@ -1,0 +1,5 @@
+Load '/home/gianfranco/APL/apl-timebooking/booking.dyalog'
+Load '/home/gianfranco/APL/apl-timebooking/calendar.dyalog'
+Load '/home/gianfranco/APL/apl-timebooking/command.dyalog'
+Load '/home/gianfranco/APL/apl-timebooking/server.dyalog'
+Run #.Server.Start 52000
