@@ -3,6 +3,7 @@
 calendars ← ⍬
 
 ∇ Start port;r;name;mode
+        load_conga_drc_if_not_already_present
         name ← 'Booking Server'
         mode ← 'Text'
         #.DRC.Init ''
@@ -14,6 +15,12 @@ calendars ← ⍬
                 connect_receive_loop name
                 ⎕ ← name, 'Terminating'
                 {}#.DRC.Close name
+        :EndIf
+∇
+
+∇ load_conga_drc_if_not_already_present
+        :If 0=⎕NC '#.DRC'
+                'DRC' #.⎕CY 'conga'
         :EndIf
 ∇
 
