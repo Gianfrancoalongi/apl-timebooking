@@ -92,7 +92,11 @@ calendars ← ⍬
 
 ∇ Z ← show_calendar data;selected
      selected ← ({ (⊂⊃⍵) ∊ data } ¨ calendars)/calendars
-     Z ← ⊃{⍺,(⎕UCS 10),⍵}/ #.Calendar.visualize ¨ selected
+     :If 0=⊃⍴selected
+             Z ← 'no such bookable ',⊃{⍺,' ',⍵}/data
+     :Else
+             Z ← ⊃{⍺,(⎕UCS 10),⍵}/ #.Calendar.visualize ¨ selected
+     :EndIf
 ∇
 
 ∇ Z ← book_slots data;mode
