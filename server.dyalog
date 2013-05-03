@@ -74,8 +74,8 @@ calendars ← ⍬
 ∇
 
 ∇ Z ← add_new_bookable data
-     calendars,← ⊂#.Calendar.new_calendar (⊃data) 3 3
-     Z ← 'added a new calendar for ',⊃data
+     calendars,← { #.Calendar.new_calendar ⍵ 3 3 } ¨ data
+     Z ← 'added a new calendar for ',⊃{⍺,' ',⍵ }/data
 ∇
 
 ∇ Z ← remove_bookable data;hits;removed;missing

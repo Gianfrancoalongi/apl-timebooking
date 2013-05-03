@@ -37,4 +37,6 @@ send_receive_test("remove room1 abba","removed abba");
 
 send_receive_test("show abba","no such bookable abba");
 
+send_receive_test("add abba room1 room2","added a new calendar for abba room1 room2");
+
 send_receive_test("stop","stopped server");
