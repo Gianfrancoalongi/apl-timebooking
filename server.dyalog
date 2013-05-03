@@ -60,6 +60,8 @@ calendars ← ⍬
      :Select ⊃ command
      :Case 'add'
              reply ← add_new_bookable rest
+     :Case 'remove'
+             reply ← remove_bookable rest
      :Case 'show'
              reply ← show_calendar rest
      :Case 'book'
@@ -74,6 +76,12 @@ calendars ← ⍬
 ∇ Z ← add_new_bookable data
      calendars,← ⊂#.Calendar.new_calendar (⊃data) 3 3
      Z ← 'added a new calendar for ',⊃data
+∇
+
+∇ Z ← remove_bookable data;removed
+     removed ← ⊃ ¨ ({(⊂⊃⍵) ∊ data} ¨ calendars)/calendars
+     calendars ← ({~(⊃⍵) ∊ data} ¨ data)/calendars
+     Z ← 'removed ',⍕removed
 ∇
 
 ∇ Z ← show_calendar data;selected

@@ -26,6 +26,5 @@ send_receive_test("add room2","added a new calendar for room2");
 send_receive_test("book all 2 7 5 room1 room2","booked slots 2 3 4 5 6");
 send_receive_test("show room1","room1 OXX XXX OOO");
 send_receive_test("show room2","room2 OXX XXX OOO");
-send_receive_test("add person1","added a new calendar for person1");
-send_receive_test("add person2","added a new calendar for person2");
+send_receive_test("remove room1 room2 abba","removed abba room1 room2");
 send_receive_test("stop","stopped server");
