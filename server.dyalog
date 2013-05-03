@@ -78,10 +78,16 @@ calendars ← ⍬
      Z ← 'added a new calendar for ',⊃data
 ∇
 
-∇ Z ← remove_bookable data;removed
-     removed ← ⊃ ¨ ({(⊂⊃⍵) ∊ data} ¨ calendars)/calendars
-     calendars ← ({~(⊃⍵) ∊ data} ¨ data)/calendars
-     Z ← 'removed ',⍕removed
+∇ Z ← remove_bookable data;removed;indices
+     hit_mask ← {(⊂⊃⍵) ∊ data} ¨ calendars
+     removed ← ⊃ ¨ hit_mask/calendars
+     missing ← ({~(⊂⍵) ∊ (data ∩ removed) } ¨ data)/data
+     :If 0≠⊃⍴missing
+             Z ← 'no such bookable ',⊃{⍺,' ',⍵}/missing
+     :Else
+             calendars ← (~hit_mask)/calendars
+             Z ← 'removed ',⊃{⍺,' ',⍵}/removed
+     :EndIf
 ∇
 
 ∇ Z ← show_calendar data;selected
