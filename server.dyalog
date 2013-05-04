@@ -104,6 +104,8 @@ calendars ← ⍬
      :Select mode
      :Case 'all'
              Z ← book_all data
+     :Case 'maximize'
+             Z ← maximize_booking
      :EndSelect
 ∇
 
@@ -115,6 +117,10 @@ calendars ← ⍬
      slots ← (¯1 + ⍎from) + #.Booking.indices_of_slots_with_all_musts_and_maximizing_could slices ⍬ (⍎duration)
      calendars[indices] ← { #.Calendar.mark_as_booked ⍵ slots 1 } ¨ selected
      Z ← 'booked slots ',⍕slots
+∇
+
+∇ Z ← maximize_booking
+     Z ← 'booking failed - not implemented'
 ∇
 
 :EndNameSpace
