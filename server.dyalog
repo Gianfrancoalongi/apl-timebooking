@@ -111,15 +111,21 @@ calendars ← ⍬
 
 ∇ Z ← book_all data;from;to;duration;indices;slices;slots;selected
      (from duration) ← data[2 3]
-     indices ← ({ (⊂⊃⍵) ∊ 4↓data } ¨ calendars)/⍳⍴calendars
+     indices ← ({ (⊂⊃⍵) ∊ 3↓data } ¨ calendars)/⍳⍴calendars
      selected ← calendars[indices]
      slots ← (⍎from),(⍎from) + ⍳ (¯1 + ⍎duration)
      calendars[indices] ← { #.Calendar.mark_as_booked ⍵ slots 1 } ¨ selected
      Z ← 'booked slots ',⍕slots
 ∇
 
-∇ Z ← maximize_booking
-     Z ← 'booking failed - not implemented'
+∇ Z ← maximize_booking;from;to;duration;indices;selected;slices;slots
+     (from to duration) ← data[2 3 4]
+     indices ← ({ (⊂⊃⍵) ∊ 4↓data } ¨ calendars)/⍳⍴calendars
+     selected ← calendars[indices]
+     slices ← { #.Calendar.calendar_slice ⍵ (⍎from) (⍎to) } ¨ selected
+     slots ← #.Booking.indices_of_slots_maximizing_attending slices (⍎duration)
+     calendars[indices] ← { #.Calendar.mark_as_booked ⍵ slots 1 } ¨ selected
+     Z ← 'booked slots ',⍕slots
 ∇
 
 :EndNameSpace
