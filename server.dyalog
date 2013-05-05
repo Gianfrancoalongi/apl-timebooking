@@ -110,11 +110,10 @@ calendars ← ⍬
 ∇
 
 ∇ Z ← book_all data;from;to;duration;indices;slices;slots;selected
-     (from to duration) ← data[2 3 4]
+     (from duration) ← data[2 3]
      indices ← ({ (⊂⊃⍵) ∊ 4↓data } ¨ calendars)/⍳⍴calendars
      selected ← calendars[indices]
-     slices ← { #.Calendar.calendar_slice ⍵ (⍎from) (⍎to) } ¨ selected
-     slots ← (¯1 + ⍎from) + #.Booking.indices_of_slots_with_all_musts_and_maximizing_could slices ⍬ (⍎duration)
+     slots ← (⍎from),(⍎from) + ⍳ (¯1 + ⍎duration)
      calendars[indices] ← { #.Calendar.mark_as_booked ⍵ slots 1 } ¨ selected
      Z ← 'booked slots ',⍕slots
 ∇
