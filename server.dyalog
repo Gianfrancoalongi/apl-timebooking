@@ -105,7 +105,9 @@ calendars ← ⍬
      :Case 'all'
              Z ← book_all data
      :Case 'maximize'
-             Z ← maximize_booking
+             Z ← maximize_booking data
+     :Case 'mustcould'
+             Z ← book_musts_and_could data
      :EndSelect
 ∇
 
@@ -118,7 +120,7 @@ calendars ← ⍬
      Z ← 'booked slots ',⍕slots
 ∇
 
-∇ Z ← maximize_booking;from;to;duration;indices;selected;slices;slots
+∇ Z ← maximize_booking data;from;to;duration;indices;selected;slices;slots
      (from to duration) ← data[2 3 4]
      indices ← indices_of_named_calendars 4↓data
      selected ← calendars[indices]
@@ -126,6 +128,10 @@ calendars ← ⍬
      slots ← #.Booking.indices_of_slots_maximizing_attending slices (⍎duration)
      calendars[indices] ← { #.Calendar.mark_as_booked ⍵ slots 1 } ¨ selected
      Z ← 'booked slots ',⍕slots
+∇
+
+∇ Z ← book_musts_and_could data
+     Z ← 'not implemented yet'
 ∇
 
 ∇ Z ← indices_of_named_calendars data
