@@ -111,7 +111,7 @@ calendars ← ⍬
 
 ∇ Z ← book_all data;from;to;duration;indices;slices;slots;selected
      (from duration) ← data[2 3]
-     indices ← ({ (⊂⊃⍵) ∊ 3↓data } ¨ calendars)/⍳⍴calendars
+     indices ← indices_of_named_calendars 3↓data
      selected ← calendars[indices]
      slots ← (⍎from),(⍎from) + ⍳ (¯1 + ⍎duration)
      calendars[indices] ← { #.Calendar.mark_as_booked ⍵ slots 1 } ¨ selected
@@ -120,12 +120,16 @@ calendars ← ⍬
 
 ∇ Z ← maximize_booking;from;to;duration;indices;selected;slices;slots
      (from to duration) ← data[2 3 4]
-     indices ← ({ (⊂⊃⍵) ∊ 4↓data } ¨ calendars)/⍳⍴calendars
+     indices ← indices_of_named_calendars 4↓data
      selected ← calendars[indices]
      slices ← { #.Calendar.calendar_slice ⍵ (⍎from) (⍎to) } ¨ selected
      slots ← #.Booking.indices_of_slots_maximizing_attending slices (⍎duration)
      calendars[indices] ← { #.Calendar.mark_as_booked ⍵ slots 1 } ¨ selected
      Z ← 'booked slots ',⍕slots
+∇
+
+∇ Z ← indices_of_named_calendars data
+     Z ← ({ (⊂⊃⍵) ∊ data } ¨ calendars)/⍳⍴calendars
 ∇
 
 :EndNameSpace
